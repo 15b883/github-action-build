@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 19.1
       - name: Switch to project directory
-        working-directory: ./xidan
+        run: cd ./xidan
       - name: Install dependencies
         run: npm install
       - name: Build frontend
