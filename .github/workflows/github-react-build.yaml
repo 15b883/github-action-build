@@ -15,12 +15,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 19.1
-      - name: Switch to project directory
-        run: cd ./xidan
-      - name: Install dependencies
-        run: npm install
-      - name: Build frontend
-        run: npm run build       
+      - name: build
+        run: cd ./xidan && npm install && npm run build 
+#       - name: Install dependencies
+#         run: npm install
+#       - name: Build frontend
+#         run: npm run build       
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
