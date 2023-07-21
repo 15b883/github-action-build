@@ -1,0 +1,26 @@
+name: Change Time for China
+
+on:
+#   schedule:
+#     - cron: '25 17 * * *' # 每天的0时（UTC时间）
+  workflow_dispatch:  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # 调整为中国时间
+      - name: Adjust to China Time
+        run: |
+          echo "Scheduling job in China Time"
+          current_time=$(date -u +'%H:%M')
+          hour=$(expr \( $(date -u +'%H') + 8 \) % 24)
+          cron_expression="${current_time/$(date -u +'%H')/$hour}"
+          echo "Adjusted cron expression: $cron_expression"
+
+      # 在此处执行其他任务
+      - name: Show China 
+        run: date && echo "显示中国时间"
